@@ -25,7 +25,14 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if 0
 #include <cmath>
+#else
+extern "C"
+{
+	double __cdecl ceil(double _X);
+}
+#endif
 
 #include "bignum-dtoa.h"
 

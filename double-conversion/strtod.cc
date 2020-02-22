@@ -25,8 +25,21 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if 0
 #include <climits>
+#else
+extern "C"
+{
+}
+#endif
+
+#if 0
 #include <cstdarg>
+#else
+extern "C"
+{
+}
+#endif
 
 #include "bignum.h"
 #include "cached-powers.h"

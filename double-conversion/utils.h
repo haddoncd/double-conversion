@@ -28,10 +28,31 @@
 #ifndef DOUBLE_CONVERSION_UTILS_H_
 #define DOUBLE_CONVERSION_UTILS_H_
 
+#if 0
 #include <cstdlib>
-#include <cstring>
+#else
+extern "C"
+{
+	__declspec(dllimport) __declspec(noreturn) void __cdecl abort(void);
+}
+#endif
 
+#if 0
+#include <cstring>
+#else
+extern "C"
+{
+	size_t __cdecl strlen(char const* _Str);
+	void* __cdecl memmove(void* _Dst, void const* _Src, size_t _Size);
+}
+#endif
+
+#if 0
 #include <cassert>
+#else
+#define assert(expression) ((void)0)
+#endif
+
 #ifndef DOUBLE_CONVERSION_ASSERT
 #define DOUBLE_CONVERSION_ASSERT(condition)         \
     assert(condition);
@@ -194,7 +215,7 @@ inline int StrLength(const char* string) {
 template <typename T>
 class Vector {
  public:
-  Vector() : start_(NULL), length_(0) {}
+  Vector() : start_(nullptr), length_(0) {}
   Vector(T* data, int len) : start_(data), length_(len) {
     DOUBLE_CONVERSION_ASSERT(len == 0 || (len > 0 && data != NULL));
   }

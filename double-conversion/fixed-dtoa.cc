@@ -25,7 +25,13 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if 0
 #include <cmath>
+#else
+extern "C"
+{
+}
+#endif
 
 #include "fixed-dtoa.h"
 #include "ieee.h"

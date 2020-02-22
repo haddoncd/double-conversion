@@ -25,9 +25,33 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if 0
 #include <climits>
-#include <locale>
+#else
+#define INT_MAX       2147483647    // maximum (signed) int value
+extern "C"
+{
+}
+#endif
+
+#if 0
+#include <ctype>
+#else
+extern "C"
+{
+	int tolower(int ch);
+}
+#endif
+
+#if 0
 #include <cmath>
+#else
+extern "C"
+{
+	int __cdecl abs(int _X);
+}
+#endif
+
 
 #include "string-to-double.h"
 
@@ -38,12 +62,6 @@
 namespace double_conversion {
 
 namespace {
-
-inline char ToLower(char ch) {
-  static const std::ctype<char>& cType =
-      std::use_facet<std::ctype<char> >(std::locale::classic());
-  return cType.tolower(ch);
-}
 
 inline char Pass(char ch) {
   return ch;
@@ -73,7 +91,7 @@ static bool ConsumeSubString(Iterator* current,
                              const char* substring,
                              bool allow_case_insensitivity) {
   if (allow_case_insensitivity) {
-    return ConsumeSubStringImpl(current, end, substring, ToLower);
+    return ConsumeSubStringImpl(current, end, substring, tolower);
   } else {
     return ConsumeSubStringImpl(current, end, substring, Pass);
   }
@@ -83,7 +101,7 @@ static bool ConsumeSubString(Iterator* current,
 inline bool ConsumeFirstCharacter(char ch,
                                          const char* str,
                                          bool case_insensitivity) {
-  return case_insensitivity ? ToLower(ch) == str[0] : ch == str[0];
+  return case_insensitivity ? tolower(ch) == str[0] : ch == str[0];
 }
 }  // namespace
 
@@ -462,7 +480,7 @@ double StringToDoubleConverter::StringToIeee(
     current = next_non_space;
   }
 
-  if (infinity_symbol_ != NULL) {
+  if (infinity_symbol_ != nullptr) {
     if (ConsumeFirstCharacter(*current, infinity_symbol_, allow_case_insensitivity)) {
       if (!ConsumeSubString(&current, end, infinity_symbol_, allow_case_insensitivity)) {
         return junk_string_value_;
@@ -480,7 +498,7 @@ double StringToDoubleConverter::StringToIeee(
     }
   }
 
-  if (nan_symbol_ != NULL) {
+  if (nan_symbol_ != nullptr) {
     if (ConsumeFirstCharacter(*current, nan_symbol_, allow_case_insensitivity)) {
       if (!ConsumeSubString(&current, end, nan_symbol_, allow_case_insensitivity)) {
         return junk_string_value_;

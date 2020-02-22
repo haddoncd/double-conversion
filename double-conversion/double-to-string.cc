@@ -25,9 +25,49 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if 0
 #include <algorithm>
+#else
+namespace std
+{
+	template <typename T>
+	T min(T a, T b)
+	{
+		return a < b ? a : b;
+	}
+
+	template <typename T>
+	T max(T a, T b)
+	{
+		return a < b ? b : a;
+	}
+}
+#endif
+
+#if 0
 #include <climits>
+#else
+extern "C"
+{
+}
+#endif
+
+#if 0
 #include <cmath>
+#else
+extern "C"
+{
+}
+#endif
+
+#if 0
+#include <cstring>
+#else
+extern "C"
+{
+	void* __cdecl memset(void* _Dst, int _Val, size_t _Size);
+}
+#endif
 
 #include "double-to-string.h"
 
@@ -56,7 +96,7 @@ bool DoubleToStringConverter::HandleSpecialValues(
     StringBuilder* result_builder) const {
   Double double_inspect(value);
   if (double_inspect.IsInfinite()) {
-    if (infinity_symbol_ == NULL) return false;
+    if (infinity_symbol_ == nullptr) return false;
     if (value < 0) {
       result_builder->AddCharacter('-');
     }
@@ -64,7 +104,7 @@ bool DoubleToStringConverter::HandleSpecialValues(
     return true;
   }
   if (double_inspect.IsNan()) {
-    if (nan_symbol_ == NULL) return false;
+    if (nan_symbol_ == nullptr) return false;
     result_builder->AddString(nan_symbol_);
     return true;
   }

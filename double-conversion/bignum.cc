@@ -25,8 +25,32 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if 0
 #include <algorithm>
+#else
+namespace std
+{
+	template <typename T>
+	T min(T a, T b)
+	{
+		return a < b ? a : b;
+	}
+
+	template <typename T>
+	T max(T a, T b)
+	{
+		return a < b ? b : a;
+	}
+}
+#endif
+
+#if 0
 #include <cstring>
+#else
+extern "C"
+{
+}
+#endif
 
 #include "bignum.h"
 #include "utils.h"
