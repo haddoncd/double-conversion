@@ -29,9 +29,8 @@
 #include <string.h>
 
 
-#include "double-conversion/bignum.h"
+#include "double-conversion/hcd-double-conversion.hpp"
 #include "cctest.h"
-#include "double-conversion/utils.h"
 
 using namespace double_conversion;
 

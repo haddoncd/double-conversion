@@ -2,25 +2,10 @@ cmake_minimum_required(VERSION 3.0)
 project(double-conversion VERSION 3.1.5)
 
 set(headers
-    double-conversion/bignum.h
-    double-conversion/cached-powers.h
-    double-conversion/diy-fp.h
-    double-conversion/double-conversion.h
-    double-conversion/fast-dtoa.h
-    double-conversion/fixed-dtoa.h
-    double-conversion/ieee.h
-    double-conversion/strtod.h
-    double-conversion/utils.h)
+    double-conversion/hcd-double-conversion.hpp)
 
 add_library(double-conversion
-            double-conversion/bignum.cc
-            double-conversion/bignum-dtoa.cc
-            double-conversion/cached-powers.cc
-            double-conversion/diy-fp.cc
-            double-conversion/double-conversion.cc
-            double-conversion/fast-dtoa.cc
-            double-conversion/fixed-dtoa.cc
-            double-conversion/strtod.cc
+            double-conversion/hcd-double-conversion.cpp
             ${headers})
 target_include_directories(
     double-conversion PUBLIC

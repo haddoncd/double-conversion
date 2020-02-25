@@ -2,12 +2,8 @@
 
 #include <stdlib.h>
 
-#include "double-conversion/bignum.h"
+#include "double-conversion/hcd-double-conversion.hpp"
 #include "cctest.h"
-#include "double-conversion/diy-fp.h"
-#include "double-conversion/ieee.h"
-#include "double-conversion/strtod.h"
-#include "double-conversion/utils.h"
 
 using namespace double_conversion;
 

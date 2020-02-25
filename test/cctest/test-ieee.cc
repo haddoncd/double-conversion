@@ -3,9 +3,7 @@
 #include <stdlib.h>
 
 #include "cctest.h"
-#include "double-conversion/diy-fp.h"
-#include "double-conversion/utils.h"
-#include "double-conversion/ieee.h"
+#include "double-conversion/hcd-double-conversion.hpp"
 
 
 using namespace double_conversion;

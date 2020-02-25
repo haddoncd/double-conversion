@@ -31,7 +31,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "double-conversion/utils.h"
+#include "double-conversion/hcd-double-conversion.hpp"
 
 #ifndef TEST
 #define TEST(Name)                                                       \
